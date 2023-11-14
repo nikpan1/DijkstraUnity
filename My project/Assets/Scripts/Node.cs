@@ -18,15 +18,13 @@ public class Node : MonoBehaviour
         public List<Transform> connected = new List<Transform>();
     }
 
-    [SerializeField]
     public static List<ls> allNodes = new List<ls>();
-
     public string label = "";
 
     [SerializeField] public List<Transform> connections = new List<Transform>();
 
     // the distances between connected nodes can be backed into the data later on
-    public List<float> distances = new List<float>();
+    private List<float> distances = new List<float>();
 
     // Start is called before the first frame update
     void Start() {
@@ -50,11 +48,5 @@ public class Node : MonoBehaviour
 
         ls inst = new ls(this.transform, connections);
         allNodes.Add(inst);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -18,8 +18,8 @@ public class DrawPaths : MonoBehaviour
         public Transform end;
     }
 
+    
     public List<lines> conns = new List<lines>();
-
 
 
     // Start is called before the first frame update
@@ -39,16 +39,9 @@ public class DrawPaths : MonoBehaviour
             }
         }
 
-        Debug.Log("eo2");
         foreach (lines line in conns)
         {
-            Debug.DrawLine(line.start.position, line.end.position, Color.red, 10.0f);
+            Debug.DrawLine(line.start.position, line.end.position, Color.red, 300.0f);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
