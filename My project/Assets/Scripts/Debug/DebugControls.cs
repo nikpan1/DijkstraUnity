@@ -19,7 +19,12 @@ public class DebugControls : Editor
         }
         if (GUILayout.Button("Draw Lines"))
         {
-            DrawPaths.DrawLines();
+            DrawPaths.DrawAllLines();
+        }
+        if (GUILayout.Button("Get Shortest Path"))
+        {
+            DijkstraPathFinding alg = new DijkstraPathFinding(Node.allNodes[0].obj, Node.allNodes[Node.allNodes.Count - 1].obj);
+            var path = alg.FindPath();
         }
     }
 }

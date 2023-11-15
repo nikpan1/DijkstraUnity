@@ -24,7 +24,7 @@ public class DrawPaths : MonoBehaviour
 
     private void Start()
     {
-        DrawLines();
+        DrawAllLines();
     }
 
     static private void createConnectionMatrix()
@@ -45,13 +45,29 @@ public class DrawPaths : MonoBehaviour
 
     }
 
-    static public void DrawLines()
+    static public void DrawAllLines()
     {
         if (conns.Count == 0) createConnectionMatrix();
         
         foreach (lines line in conns)
         {
             Debug.DrawLine(line.start.position, line.end.position, Color.red, 15.0f);
+        }
+    }
+
+    static public void DrawPath(List<Node> path)
+    {
+        Node next = path[0], previous = path[1];
+
+        for(int i = 1; i < path.Count; i ++)
+        {
+            Vector3 v1 = new Vector3(next.transform.position.x, 0.1f, next.transform.position.y);
+            Vector3 v2 = new Vector3(previous.transform.position.x, 0.1f, previous.transform.position.y);
+
+            Debug.DrawLine(v1, v2, Color.green, 15.0f);
+
+            next = path[i];
+            previous = path[i - 1];
         }
     }
 }

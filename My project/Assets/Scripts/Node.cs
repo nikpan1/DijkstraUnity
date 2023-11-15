@@ -30,11 +30,9 @@ public class Node : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        
         foreach (var tr in connections) {
             float dist = Vector3.Distance(tr.transform.position, this.transform.position);
             distances.Add(dist);
-
 
             Node scriptNode = tr.GetComponent<Node>();
 
@@ -45,7 +43,6 @@ public class Node : MonoBehaviour
                 scriptNode.connections.Add(this);
                 scriptNode.distances.Add(dist);
             }
-
         }
 
         ls inst = new ls(this, connections);      // huh

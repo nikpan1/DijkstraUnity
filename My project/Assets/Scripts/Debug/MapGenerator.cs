@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -47,6 +47,7 @@ public class MapGenerator : MonoBehaviour
 
     public void Regenerate()
     {
+        // @TODO jak to powinno być zrobione huh
         if (nodePrefab == null) nodePrefab = this.GetComponent<kurwaprefabholderdzienki>().prefab;
         
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DijkstraPathFinding : MonoBehaviour
+public class DijkstraPathFinding
 {
     [SerializeField] private Node start;
     [SerializeField] private Node end;
@@ -12,8 +12,13 @@ public class DijkstraPathFinding : MonoBehaviour
 
     private List<Node> visited = new List<Node>();
 
+    public DijkstraPathFinding(Node _start, Node _end)
+    {
+        start = _start;
+        end = _end;
+    }
 
-    private void Start()
+    private void Start()        // @TODO do wyjebania
     {
         foreach (var node in Node.allNodes)
         {
@@ -38,22 +43,27 @@ public class DijkstraPathFinding : MonoBehaviour
 
     void visit(Node node, List<Node> path, float distance)
     {
-        Node minN;
-        // float minVal = distanceList.Min();
-        // int index = distanceList.IndexOf(minVal);
+        visited.Add(node);
+        if(d_values[d_nodes.IndexOf(node)] > distance)
+        {
+            d_values[d_nodes.IndexOf(node)] = distance;
+        }
 
-        var a = node.distances;
+
         for (int i = 0; i < node.connections.Count; i++)
         {
-            //if(map)
+            var cp_path = path;
+            cp_path.Add(node.connections[i]);
+            visit(node.connections[i], cp_path, distance + node.distances[i]);
         }
     }
 
-    List<Node> FindPath()
+    public List<Node> FindPath()
     {
         List<Node> path = new List<Node>();
         visited = new List<Node>();
 
+        path.Add(start);
         visit(start, path, 0);
         
 
