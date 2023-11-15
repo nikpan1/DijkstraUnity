@@ -16,11 +16,10 @@ public class MapGenerator : MonoBehaviour
     private void Generate()
     {
         // creating random connections
-        // in avg max nodeNumber/3 connections for each node
         int connectionsNumber = 0;
         foreach (var node in nodes)
         {
-            connectionsNumber = Random.Range(0, (int)((nodeNumber / 3)));
+            connectionsNumber = Random.Range(0, (int)((nodeNumber / 10)));
             Node nodeSC = node.GetComponent<Node>();
             
             int i = nodeSC.connections.Count;
@@ -60,6 +59,7 @@ public class MapGenerator : MonoBehaviour
         // creating nodes with random positions
         for (int i = 0; i < nodeNumber; i ++) {
             GameObject newNode = Instantiate(nodePrefab);
+            newNode.GetComponent<Node>().Start(); // @TODO do ogarnięcia
             newNode.transform.position = new Vector3(Random.Range(-radius, radius), 0, Random.Range(-radius, radius));
             nodes.Add(newNode.GetComponent<Node>());
         }

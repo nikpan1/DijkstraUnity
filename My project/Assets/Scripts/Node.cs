@@ -29,7 +29,7 @@ public class Node : MonoBehaviour
     public List<float> distances = new List<float>();
 
     // Start is called before the first frame update
-    void Start() {
+    public void Start() {
         foreach (var tr in connections) {
             float dist = Vector3.Distance(tr.transform.position, this.transform.position);
             distances.Add(dist);

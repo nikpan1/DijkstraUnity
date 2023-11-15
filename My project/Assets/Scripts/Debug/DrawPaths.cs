@@ -57,17 +57,14 @@ public class DrawPaths : MonoBehaviour
 
     static public void DrawPath(List<Node> path)
     {
-        Node next = path[0], previous = path[1];
+        Node next, previous;
 
         for(int i = 1; i < path.Count; i ++)
         {
-            Vector3 v1 = new Vector3(next.transform.position.x, 0.1f, next.transform.position.y);
-            Vector3 v2 = new Vector3(previous.transform.position.x, 0.1f, previous.transform.position.y);
-
-            Debug.DrawLine(v1, v2, Color.green, 15.0f);
-
-            next = path[i];
-            previous = path[i - 1];
+            Vector3 v1 = new Vector3(path[i].transform.position.x, 0.1f, path[i].transform.position.y);
+            Vector3 v2 = new Vector3(path[i - 1].transform.position.x, 0.1f, path[i - 1].transform.position.y);
+            
+            Debug.DrawLine(path[i].transform.position, path[i - 1].transform.position, Color.green, 15.0f);
         }
     }
 }
