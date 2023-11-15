@@ -53,7 +53,7 @@ public class MapGenerator : MonoBehaviour
 
         // spawning of new maps can be optimzed by reusing
         // already created instances, but there is no need for it :)
-        foreach (var oldNode in nodes) DestroyImmediate(oldNode);
+        foreach (var oldNode in nodes) DestroyImmediate(oldNode.gameObject);
         nodes = new List<Node>();
         Node.allNodes.Clear();
 

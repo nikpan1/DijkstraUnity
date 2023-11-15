@@ -19,7 +19,7 @@ public class Node : MonoBehaviour
     }
 
     // connection matrix
-    // @TODO do przerobienia na tablicę 2d
+    // @TODO do przerobienia na tablicę 2d indexów
     public static List<ls> allNodes = new List<ls>();
     public string label = "";
 

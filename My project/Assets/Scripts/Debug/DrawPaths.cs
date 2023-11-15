@@ -39,7 +39,6 @@ public class DrawPaths : MonoBehaviour
                 if (checked_conn.Contains(conn)) continue;
                 lines line = new lines(node.obj.transform, conn.transform);
                 conns.Add(line);
-
             }
         }
 
@@ -47,7 +46,8 @@ public class DrawPaths : MonoBehaviour
 
     static public void DrawAllLines()
     {
-        if (conns.Count == 0) createConnectionMatrix();
+        if (conns.Count == 0) ;
+        createConnectionMatrix();
         
         foreach (lines line in conns)
         {
