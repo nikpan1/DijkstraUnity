@@ -46,7 +46,7 @@ public class Node : MonoBehaviour
 
         }
 
-        ls inst = new ls(this.transform, connections);
+        ls inst = new ls(this.transform, connections);      // huh
         allNodes.Add(inst);
     }
 }
