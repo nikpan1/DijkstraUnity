@@ -19,11 +19,15 @@ public class DrawPaths : MonoBehaviour
     }
 
     
-    public List<lines> conns = new List<lines>();
+    static List<lines> conns = new List<lines>();
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
+    {
+        DrawLines();
+    }
+
+    static private void createConnectionMatrix()
     {
         conns = new List<lines>();
         List<Transform> checked_conn = new List<Transform>();
@@ -39,9 +43,15 @@ public class DrawPaths : MonoBehaviour
             }
         }
 
+    }
+
+    static public void DrawLines()
+    {
+        if (conns.Count == 0) createConnectionMatrix();
+        
         foreach (lines line in conns)
         {
-            Debug.DrawLine(line.start.position, line.end.position, Color.red, 300.0f);
+            Debug.DrawLine(line.start.position, line.end.position, Color.red, 15.0f);
         }
     }
 }

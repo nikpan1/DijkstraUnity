@@ -18,6 +18,7 @@ public class Node : MonoBehaviour
         public List<Transform> connected = new List<Transform>();
     }
 
+    // connection matrix
     public static List<ls> allNodes = new List<ls>();
     public string label = "";
 
