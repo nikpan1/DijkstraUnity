@@ -30,14 +30,14 @@ public class DrawPaths : MonoBehaviour
     static private void createConnectionMatrix()
     {
         conns = new List<lines>();
-        List<Transform> checked_conn = new List<Transform>();
+        List<Node> checked_conn = new List<Node>();
 
-        foreach (Node.ls node in Node.allNodes)
+        foreach (var node in Node.allNodes)
         {
-            foreach (Transform conn in node.connected)
+            foreach (var conn in node.connected)
             {
                 if (checked_conn.Contains(conn)) continue;
-                lines line = new lines(node.obj, conn);
+                lines line = new lines(node.obj.transform, conn.transform);
                 conns.Add(line);
 
             }
