@@ -48,11 +48,11 @@ public class MapGenerator : MonoBehaviour
     {
         // @TODO jak to powinno być zrobione huh
         if (nodePrefab == null) nodePrefab = this.GetComponent<kurwaprefabholderdzienki>().prefab;
-        
+
 
         // spawning of new maps can be optimzed by reusing
         // already created instances, but there is no need for it :)
-        foreach (var oldNode in nodes) DestroyImmediate(oldNode.gameObject);
+        foreach (var oldNode in nodes) if (oldNode != null) DestroyImmediate(oldNode.gameObject);
         nodes = new List<Node>();
         Node.allNodes.Clear();
 

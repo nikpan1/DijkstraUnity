@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System;
+using TMPro;
 
 public class Node : MonoBehaviour
 {
@@ -24,12 +25,21 @@ public class Node : MonoBehaviour
     public string label = "";
 
     [SerializeField] public List<Node> connections = new List<Node>();
+    [SerializeField] private TextMeshPro labelTextField;
 
-    // the distances between connected nodes can be backed into the data later on
+    // the distances between connected wwnodes can be backed into the data later on
     public List<float> distances = new List<float>();
+
+    public void drawLabel()
+    {
+        if (label == "") label = gameObject.GetInstanceID().ToString();
+        labelTextField.SetText(label);
+    }
+
 
     // Start is called before the first frame update
     public void Start() {
+        drawLabel();
         foreach (var tr in connections) {
             float dist = Vector3.Distance(tr.transform.position, this.transform.position);
             distances.Add(dist);
@@ -44,7 +54,7 @@ public class Node : MonoBehaviour
                 scriptNode.distances.Add(dist);
             }
         }
-
+            
         ls inst = new ls(this, connections);      // huh
         allNodes.Add(inst);
     }

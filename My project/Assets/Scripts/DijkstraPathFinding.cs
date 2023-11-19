@@ -1,16 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class DijkstraPathFinding
+public class DijkstraPathFinding : MonoBehaviour
 {
     [SerializeField] private Node start;
     [SerializeField] private Node end;
 
-    private List<Node> d_nodes= new List<Node>();
+    private List<Node> d_nodes = new List<Node>();
     private List<float> d_values = new List<float>();
 
     private List<Node> visited = new List<Node>();
+
+    [Serializable] public class bools
+    {
+        public List<bool> val = new List<bool>();
+    }
+
+    [SerializeField] public List<bools> connectionMatrix;
+
+    public List<bools> getConnectionMatrix()
+    {
+        var list = new List<bools>();
+
+        for (int j = 0; j < 10; j ++)
+        {
+            bools values = new bools();          
+            for(int k = 0; k < 10; k++)
+            {
+                values.val.Add(k % 2 == 0);
+            }
+            connectionMatrix.Add(values);
+        }
+
+        return connectionMatrix;
+    }
 
     public DijkstraPathFinding(Node _start, Node _end)
     {
